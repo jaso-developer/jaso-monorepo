@@ -1,0 +1,27 @@
+# Dependencias
+node_modules
+
+# Lockfile de npm (usamos pnpm)
+package-lock.json
+
+# Builds
+dist
+.astro
+
+# Caché de Turbo
+.turbo
+
+# Variables de entorno (nunca subir al repo)
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/settings.json
