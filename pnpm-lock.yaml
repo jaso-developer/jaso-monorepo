@@ -27,6 +27,14 @@ importers:
         specifier: ^14.0.0
         version: 14.0.0(postcss@8.5.8)
 
+  packages/tokens: {}
+
+  packages/utils:
+    devDependencies:
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
 packages:
 
   '@csstools/selector-resolve-nested@4.0.0':
@@ -445,6 +453,11 @@ packages:
 
   turbo@2.8.13:
     resolution: {integrity: sha512-nyM99hwFB9/DHaFyKEqatdayGjsMNYsQ/XBNO6MITc7roncZetKb97MpHxWf3uiU+LB9c9HUlU3Jp2Ixei2k1A==}
+    hasBin: true
+
+  typescript@5.9.3:
+    resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
+    engines: {node: '>=14.17'}
     hasBin: true
 
   update-browserslist-db@1.2.3:
@@ -868,6 +881,8 @@ snapshots:
       turbo-linux-arm64: 2.8.13
       turbo-windows-64: 2.8.13
       turbo-windows-arm64: 2.8.13
+
+  typescript@5.9.3: {}
 
   update-browserslist-db@1.2.3(browserslist@4.28.1):
     dependencies:
