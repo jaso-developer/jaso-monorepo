@@ -1,0 +1,9 @@
+{
+  "name": "@jaso/content",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    "./dev":    "./dev",
+    "./ganado": "./ganado"
+  }
+}
