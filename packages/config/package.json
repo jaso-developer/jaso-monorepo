@@ -1,0 +1,15 @@
+{
+  "name": "@jaso/config",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    "./tsconfig": "./tsconfig.base.json",
+    "./postcss": "./postcss.config.cjs"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "cssnano": "^7.1.2",
+    "postcss-import": "^16.1.1",
+    "postcss-nesting": "^14.0.0"
+  }
+}
