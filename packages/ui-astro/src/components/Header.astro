@@ -1,0 +1,107 @@
+---
+/**
+ * Header — Navegación principal del sitio.
+ *
+ * Uso:
+ *   <Header currentSite="web" />
+ *   <Header currentSite="ganado" />
+ *
+ * currentSite resalta el enlace activo según qué app lo usa.
+ */
+
+interface NavLink {
+  href:  string
+  label: string
+  site:  string
+}
+
+interface Props {
+  currentSite?: "web" | "dev" | "ganado" | "cv"
+}
+
+const { currentSite = "web" } = Astro.props
+
+const links: NavLink[] = [
+  { href: "https://jaso.me",        label: "Inicio",    site: "web"    },
+  { href: "https://dev.jaso.me",    label: "Dev",       site: "dev"    },
+  { href: "https://ganado.jaso.me", label: "Ganadería", site: "ganado" },
+  { href: "https://cv.jaso.me",     label: "CV",        site: "cv"     },
+]
+---
+
+<header class="header">
+  <nav class="nav" aria-label="Navegación principal">
+
+    <a href="https://jaso.me" class="nav__brand" aria-label="Inicio">
+      <span class="nav__brand-text">jaso.me</span>
+    </a>
+
+    <ul class="nav__links" role="list">
+      {links.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class:list={[
+              "nav__link",
+              currentSite === link.site && "nav__link--active"
+            ]}
+            aria-current={currentSite === link.site ? "page" : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+  </nav>
+</header>
+
+<style>
+  .header {
+    position:        sticky;
+    top:             0;
+    z-index:         100;
+    background:      color-mix(in srgb, var(--color-bg) 85%, transparent);
+    backdrop-filter: blur(12px);
+    border-bottom:   1px solid var(--color-border);
+  }
+
+  .nav {
+    display:         flex;
+    align-items:     center;
+    justify-content: space-between;
+    max-width:       1200px;
+    margin:          0 auto;
+    padding:         var(--space-4) var(--space-6);
+  }
+
+  .nav__brand-text {
+    font-size:   var(--text-lg);
+    font-weight: var(--font-bold);
+    color:       var(--color-primary);
+    font-family: var(--font-mono);
+  }
+
+  .nav__links {
+    display:    flex;
+    gap:        var(--space-6);
+    list-style: none;
+  }
+
+  .nav__link {
+    font-size:       var(--text-sm);
+    font-weight:     var(--font-medium);
+    color:           var(--color-text-muted);
+    text-decoration: none;
+    transition:      color 0.15s ease;
+
+    &:hover {
+      color: var(--color-text);
+    }
+
+    &.nav__link--active {
+      color:       var(--color-primary);
+      font-weight: var(--font-semibold);
+    }
+  }
+</style>

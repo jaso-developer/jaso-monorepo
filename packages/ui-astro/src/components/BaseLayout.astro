@@ -1,0 +1,134 @@
+---
+/**
+ * BaseLayout — Layout base compartido por todas las apps Astro.
+ *
+ * Incluye:
+ *   - Estructura HTML completa
+ *   - Metadatos SEO + Open Graph
+ *   - Design tokens (@jaso/tokens)
+ *   - Header y Footer
+ *
+ * Uso:
+ *   <BaseLayout
+ *     title="Mi página"
+ *     description="Descripción para SEO"
+ *     currentSite="web"
+ *   >
+ *     <p>Contenido de la página aquí</p>
+ *   </BaseLayout>
+ */
+
+import Header from "./Header.astro"
+import Footer from "./Footer.astro"
+
+interface Props {
+  title:        string
+  description:  string
+  currentSite?: "web" | "dev" | "ganado" | "cv"
+  image?:       string
+  pubDate?:     string
+  type?:        "website" | "article"
+}
+
+const {
+  title,
+  description,
+  currentSite = "web",
+  image       = "/og-image.png",
+  pubDate,
+  type        = "website",
+} = Astro.props
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site)
+const fullTitle    = title.includes("jaso.me")
+  ? title
+  : `${title} | jaso.me`
+---
+
+<!doctype html>
+<html lang="es-mx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO básico -->
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title"       content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={image} />
+    <meta property="og:url"         content={canonicalURL} />
+    <meta property="og:type"        content={type} />
+    <meta property="og:site_name"   content="jaso.me" />
+
+    {type === "article" && pubDate && (
+      <meta property="article:published_time" content={pubDate} />
+    )}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={image} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- RSS -->
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="jaso.me"
+      href="/rss.xml"
+    />
+  </head>
+
+  <body>
+    <Header currentSite={currentSite} />
+
+    <main class="main" id="main-content">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  /*
+   * is:global → estos estilos se aplican globalmente,
+   * no están scoped al componente.
+   * Aquí es donde importamos los tokens porque necesitan
+   * ser accesibles en TODOS los componentes del sitio.
+   */
+  @import "@jaso/tokens/css";
+
+  .main {
+    max-width:  1200px;
+    margin:     0 auto;
+    padding:    var(--space-12) var(--space-6);
+    min-height: calc(100vh - 140px);
+  }
+
+  /* Skip link para accesibilidad */
+  .skip-link {
+    position:   absolute;
+    top:        -100%;
+    left:       var(--space-4);
+    padding:    var(--space-2) var(--space-4);
+    background: var(--color-primary);
+    color:      var(--color-text-inverse);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: var(--font-semibold);
+    z-index:    200;
+
+    &:focus {
+      top: var(--space-4);
+    }
+  }
+</style>

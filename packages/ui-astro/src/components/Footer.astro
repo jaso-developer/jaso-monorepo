@@ -1,0 +1,94 @@
+---
+/**
+ * Footer — Pie de página compartido.
+ */
+
+const year = new Date().getFullYear()
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+
+    <div class="footer__brand">
+      <span class="footer__name">José A. Silva</span>
+      <span class="footer__tagline">Desarrollo web · Ganadería</span>
+    </div>
+
+    <nav class="footer__nav" aria-label="Links del footer">
+      <a href="https://github.com/jaso-developer" target="_blank" rel="noopener noreferrer">
+        GitHub
+      </a>
+      <a href="https://jaso.me/rss.xml">
+        RSS
+      </a>
+      <a href="mailto:jaso.developer@gmail.com">
+        Contacto
+      </a>
+    </nav>
+
+    <p class="footer__copy">
+      &copy; {year} José A. Silva · Hecho con
+      <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>
+    </p>
+
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top:  var(--space-20);
+    border-top:  1px solid var(--color-border);
+    padding:     var(--space-10) var(--space-6);
+  }
+
+  .footer__inner {
+    display:         flex;
+    flex-direction:  column;
+    align-items:     center;
+    gap:             var(--space-4);
+    max-width:       1200px;
+    margin:          0 auto;
+    text-align:      center;
+  }
+
+  .footer__brand {
+    display:        flex;
+    flex-direction: column;
+    gap:            var(--space-1);
+  }
+
+  .footer__name {
+    font-weight: var(--font-semibold);
+    color:       var(--color-text);
+  }
+
+  .footer__tagline {
+    font-size: var(--text-sm);
+    color:     var(--color-text-muted);
+  }
+
+  .footer__nav {
+    display: flex;
+    gap:     var(--space-6);
+
+    & a {
+      font-size:       var(--text-sm);
+      color:           var(--color-text-muted);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  .footer__copy {
+    font-size: var(--text-xs);
+    color:     var(--color-text-muted);
+
+    & a {
+      color:           var(--color-primary);
+      text-decoration: none;
+    }
+  }
+</style>
