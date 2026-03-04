@@ -1,0 +1,8 @@
+{
+  "name": "@jaso/tokens",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    "./css": "./src/index.css"
+  }
+}

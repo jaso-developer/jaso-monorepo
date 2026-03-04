@@ -1,0 +1,44 @@
+/**
+ * @jaso/tokens — Sistema de diseño
+ *
+ * Importar en cualquier app o framework:
+ *   import "@jaso/tokens/css"
+ *
+ * Esto da acceso a TODAS las variables CSS del sistema.
+ * Úsalas en cualquier archivo CSS:
+ *   color: var(--color-primary);
+ *   padding: var(--space-4);
+ *   font-size: var(--text-lg);
+ */
+
+@import "./colors.css";
+@import "./typography.css";
+@import "./spacing.css";
+@import "./borders.css";
+
+/* ── Reset mínimo ─────────────────────────────────────────
+   No es un reset agresivo — solo lo esencial para que
+   el comportamiento sea predecible entre navegadores.
+   ──────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin:     0;
+  padding:    0;
+}
+
+body {
+  font-family:            var(--font-sans);
+  font-size:              var(--text-base);
+  color:                  var(--color-text);
+  background-color:       var(--color-bg);
+  line-height:            var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+video {
+  max-width: 100%;
+  display:   block;
+}

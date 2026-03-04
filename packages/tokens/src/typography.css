@@ -1,0 +1,35 @@
+/**
+ * TOKENS DE TIPOGRAFÍA
+ *
+ * Escala modular basada en 1.25 (Major Third).
+ * Cada tamaño es el anterior multiplicado por 1.25.
+ * Esto crea una jerarquía visual armónica y predecible.
+ *
+ * Base: 16px (1rem)
+ */
+:root {
+  /* ── Familias tipográficas ────────────────── */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Escala de tamaños ────────────────────── */
+  --text-xs:   0.75rem;    /*  12px */
+  --text-sm:   0.875rem;   /*  14px */
+  --text-base: 1rem;       /*  16px — base */
+  --text-lg:   1.25rem;    /*  20px */
+  --text-xl:   1.563rem;   /*  25px */
+  --text-2xl:  1.953rem;   /*  31px */
+  --text-3xl:  2.441rem;   /*  39px */
+  --text-4xl:  3.052rem;   /*  49px */
+
+  /* ── Pesos ────────────────────────────────── */
+  --font-normal:   400;
+  --font-medium:   500;
+  --font-semibold: 600;
+  --font-bold:     700;
+
+  /* ── Altura de línea ──────────────────────── */
+  --leading-tight:   1.25;   /* títulos */
+  --leading-normal:  1.5;    /* texto general */
+  --leading-relaxed: 1.75;   /* texto largo, artículos */
+}

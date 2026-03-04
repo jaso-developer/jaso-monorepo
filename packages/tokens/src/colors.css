@@ -1,0 +1,46 @@
+/**
+ * TOKENS DE COLOR — @jaso/tokens
+ *
+ * Convención de nombres:
+ *   --color-{rol}-{variante}
+ *
+ * Roles:
+ *   primary  → color de marca, acciones principales
+ *   text     → contenido legible
+ *   bg       → fondos
+ *   border   → bordes y separadores
+ *   accent   → llamadas a la acción secundarias
+ *   feedback → estados del sistema (éxito, error, etc.)
+ */
+:root {
+  /* ── Primario ─────────────────────────────── */
+  --color-primary:        #2563eb;
+  --color-primary-dark:   #1d4ed8;
+  --color-primary-light:  #3b82f6;
+  --color-primary-subtle: #eff6ff;
+
+  /* ── Texto ────────────────────────────────── */
+  --color-text:           #0f172a;
+  --color-text-muted:     #64748b;
+  --color-text-inverse:   #ffffff;
+
+  /* ── Fondos ───────────────────────────────── */
+  --color-bg:             #ffffff;
+  --color-bg-subtle:      #f8fafc;
+  --color-bg-muted:       #f1f5f9;
+
+  /* ── Bordes ───────────────────────────────── */
+  --color-border:         #e2e8f0;
+  --color-border-strong:  #cbd5e1;
+
+  /* ── Acento ───────────────────────────────── */
+  --color-accent:         #f59e0b;
+  --color-accent-dark:    #d97706;
+  --color-accent-subtle:  #fffbeb;
+
+  /* ── Feedback ─────────────────────────────── */
+  --color-success:        #10b981;
+  --color-error:          #ef4444;
+  --color-warning:        #f59e0b;
+  --color-info:           #3b82f6;
+}
