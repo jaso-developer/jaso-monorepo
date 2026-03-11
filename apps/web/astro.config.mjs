@@ -29,7 +29,7 @@ export default defineConfig({
     resolve: {
       alias: {
         // Tokens CSS
-        "@jaso/tokens/css": path.resolve(root, "packages/tokens/src/index.css"),
+        "@jaso/design-tokens/css": path.resolve(root, "packages/design-tokens/src/index.css"),
 
         // Utils — apuntamos directo a los archivos fuente
         "@jaso/utils":         path.resolve(root, "packages/utils/src/index.ts"),
@@ -42,7 +42,7 @@ export default defineConfig({
     // Le dice a Vite que NO trate estos paquetes como externos
     // sino que los procese como código fuente del proyecto
     ssr: {
-      noExternal: ["@jaso/utils", "@jaso/ui-astro", "@jaso/tokens"]
+      noExternal: ["@jaso/utils", "@jaso/ui-astro", "@jaso/design-tokens"]
     }
   }
 })

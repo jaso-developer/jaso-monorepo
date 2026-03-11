@@ -14,9 +14,9 @@ importers:
 
   apps/cv:
     dependencies:
-      '@jaso/tokens':
+      '@jaso/design-tokens':
         specifier: workspace:*
-        version: link:../../packages/tokens
+        version: link:../../packages/design-tokens
       '@jaso/ui-astro':
         specifier: workspace:*
         version: link:../../packages/ui-astro
@@ -54,9 +54,9 @@ importers:
       '@jaso/content':
         specifier: workspace:*
         version: link:../../packages/content
-      '@jaso/tokens':
+      '@jaso/design-tokens':
         specifier: workspace:*
-        version: link:../../packages/tokens
+        version: link:../../packages/design-tokens
       '@jaso/ui-astro':
         specifier: workspace:*
         version: link:../../packages/ui-astro
@@ -106,7 +106,7 @@ importers:
 
   packages/content: {}
 
-  packages/tokens: {}
+  packages/design-tokens: {}
 
   packages/ui-astro:
     dependencies:

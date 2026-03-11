@@ -9,7 +9,7 @@
     "type-check": "astro check"
   },
   "dependencies": {
-    "@jaso/tokens":   "workspace:*",
+    "@jaso/design-tokens": "workspace:*",
     "@jaso/ui-astro": "workspace:*",
     "@jaso/utils":    "workspace:*",
     "astro": "^5.17.1"

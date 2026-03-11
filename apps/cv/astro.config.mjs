@@ -25,13 +25,13 @@ export default defineConfig({
 
     resolve: {
       alias: {
-        "@jaso/tokens/css": path.resolve(root, "packages/tokens/src/index.css"),
+        "@jaso/design-tokens/css": path.resolve(root, "packages/design-tokens/src/index.css"),
         "@jaso/utils":      path.resolve(root, "packages/utils/src/index.ts"),
       }
     },
 
     ssr: {
-      noExternal: ["@jaso/utils", "@jaso/ui-astro", "@jaso/tokens"]
+      noExternal: ["@jaso/utils", "@jaso/ui-astro", "@jaso/design-tokens"]
     }
   }
 })
