@@ -1,0 +1,26 @@
+{
+  "name": "@jaso/cv",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev":        "astro dev --port 4322",
+    "build":      "astro build",
+    "preview":    "astro preview",
+    "type-check": "astro check"
+  },
+  "dependencies": {
+    "@jaso/tokens":   "workspace:*",
+    "@jaso/ui-astro": "workspace:*",
+    "@jaso/utils":    "workspace:*",
+    "astro": "^5.17.1"
+  },
+  "devDependencies": {
+    "@jaso/config":    "workspace:*",
+    "@astrojs/check":  "^0.9.0",
+    "autoprefixer":    "^10.4.0",
+    "cssnano":         "^7.0.0",
+    "postcss-import":  "^16.0.0",
+    "postcss-nesting": "^12.0.0",
+    "typescript":      "^5.4.0"
+  }
+}

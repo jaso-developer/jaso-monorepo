@@ -21,19 +21,23 @@ interface Props {
 
 const { currentSite = "web" } = Astro.props
 
+// En desarrollo (astro dev) usamos localhost con los puertos de cada app.
+// En producción (astro build) usamos los dominios reales.
+const isDev = import.meta.env.DEV
+
 const links: NavLink[] = [
-  { href: "https://jaso.me",        label: "Inicio",    site: "web"    },
-  { href: "https://dev.jaso.me",    label: "Dev",       site: "dev"    },
-  { href: "https://ganado.jaso.me", label: "Ganadería", site: "ganado" },
-  { href: "https://cv.jaso.me",     label: "CV",        site: "cv"     },
+  { href: isDev ? "http://localhost:4321" : "https://jaso.me",        label: "Inicio",    site: "web"    },
+  { href: isDev ? "http://localhost:4322" : "https://dev.jaso.me",    label: "Dev",       site: "dev"    },
+  { href: isDev ? "http://localhost:4322" : "https://ganado.jaso.me", label: "Ganadería", site: "ganado" },
+  { href: isDev ? "http://localhost:4322" : "https://cv.jaso.me",     label: "CV",        site: "cv"     },
 ]
 ---
 
 <header class="header">
   <nav class="nav" aria-label="Navegación principal">
 
-    <a href="https://jaso.me" class="nav__brand" aria-label="Inicio">
-      <span class="nav__brand-text">jaso.me</span>
+    <a href={isDev ? "http://localhost:4321" : "https://jaso.me"} class="nav__brand" aria-label="Inicio">
+      <span class="nav__brand-text">jaso.me.mx</span>
     </a>
 
     <ul class="nav__links" role="list">

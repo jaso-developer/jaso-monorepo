@@ -1,0 +1,10 @@
+{
+  "extends": "@jaso/config/tsconfig",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", ".astro", "astro.config.mjs"]
+}

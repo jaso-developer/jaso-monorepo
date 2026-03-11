@@ -1,0 +1,220 @@
+---
+/**
+ * Currículum Vitae de José A. Silva
+ *
+ * Reutiliza BaseLayout de @jaso/ui-astro para mantener
+ * la identidad visual consistente con el resto del sitio.
+ */
+import BaseLayout from "@jaso/ui-astro/components/BaseLayout.astro"
+
+const experiencia = [
+  {
+    empresa:  "Freelance",
+    cargo:    "Desarrollador Web Full-Stack",
+    periodo:  "2022 — presente",
+    desc:     "Desarrollo de aplicaciones web con Astro, TypeScript y arquitecturas modernas.",
+  },
+]
+
+const habilidades = {
+  "Lenguajes":    ["TypeScript", "JavaScript", "HTML", "CSS"],
+  "Frameworks":   ["Astro", "React", "Node.js"],
+  "Herramientas": ["Git", "pnpm", "Vite", "Cloudflare Pages"],
+}
+
+const educacion = [
+  {
+    titulo:   "Ingeniería / Tu carrera aquí",
+    lugar:    "Tu universidad aquí",
+    periodo:  "20XX — 20XX",
+  },
+]
+---
+
+<BaseLayout
+  title="CV — José A. Silva"
+  description="Currículum vitae de José A. Silva, desarrollador web."
+  currentSite="cv"
+>
+
+  <div class="cv">
+
+    <!-- Encabezado -->
+    <header class="cv__header">
+      <h1 class="cv__nombre">José A. Silva</h1>
+      <p class="cv__rol">Desarrollador Web Full-Stack</p>
+      <div class="cv__contacto">
+        <a href="https://jaso.me">jaso.me</a>
+        <span aria-hidden="true">·</span>
+        <a href="mailto:hola@jaso.me">hola@jaso.me</a>
+        <span aria-hidden="true">·</span>
+        <a href="https://github.com/jaso-developer">GitHub</a>
+      </div>
+    </header>
+
+    <!-- Experiencia -->
+    <section class="cv__seccion">
+      <h2 class="cv__seccion-titulo">Experiencia</h2>
+      {experiencia.map(exp => (
+        <div class="cv__item">
+          <div class="cv__item-header">
+            <span class="cv__item-titulo">{exp.cargo}</span>
+            <span class="cv__item-periodo">{exp.periodo}</span>
+          </div>
+          <p class="cv__item-lugar">{exp.empresa}</p>
+          <p class="cv__item-desc">{exp.desc}</p>
+        </div>
+      ))}
+    </section>
+
+    <!-- Habilidades -->
+    <section class="cv__seccion">
+      <h2 class="cv__seccion-titulo">Habilidades</h2>
+      <div class="cv__habilidades">
+        {Object.entries(habilidades).map(([categoria, items]) => (
+          <div class="cv__habilidad-grupo">
+            <h3 class="cv__habilidad-cat">{categoria}</h3>
+            <ul class="cv__tags">
+              {items.map(item => <li class="cv__tag">{item}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Educación -->
+    <section class="cv__seccion">
+      <h2 class="cv__seccion-titulo">Educación</h2>
+      {educacion.map(ed => (
+        <div class="cv__item">
+          <div class="cv__item-header">
+            <span class="cv__item-titulo">{ed.titulo}</span>
+            <span class="cv__item-periodo">{ed.periodo}</span>
+          </div>
+          <p class="cv__item-lugar">{ed.lugar}</p>
+        </div>
+      ))}
+    </section>
+
+  </div>
+
+</BaseLayout>
+
+<style>
+  .cv {
+    max-width: 720px;
+    margin:    0 auto;
+    padding:   var(--space-12) 0 var(--space-20);
+  }
+
+  /* ── Encabezado ── */
+  .cv__header {
+    text-align:    center;
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-8);
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .cv__nombre {
+    font-size:     var(--text-4xl);
+    font-weight:   var(--font-bold);
+    margin-bottom: var(--space-2);
+  }
+
+  .cv__rol {
+    font-size:     var(--text-lg);
+    color:         var(--color-text-muted);
+    margin-bottom: var(--space-4);
+  }
+
+  .cv__contacto {
+    display:     flex;
+    gap:         var(--space-3);
+    justify-content: center;
+    font-size:   var(--text-sm);
+
+    a {
+      color:           var(--color-primary);
+      text-decoration: none;
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  /* ── Secciones ── */
+  .cv__seccion {
+    margin-bottom: var(--space-10);
+  }
+
+  .cv__seccion-titulo {
+    font-size:     var(--text-xl);
+    font-weight:   var(--font-bold);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+    color:         var(--color-primary);
+  }
+
+  /* ── Items (experiencia / educación) ── */
+  .cv__item {
+    margin-bottom: var(--space-6);
+  }
+
+  .cv__item-header {
+    display:         flex;
+    justify-content: space-between;
+    align-items:     baseline;
+    margin-bottom:   var(--space-1);
+  }
+
+  .cv__item-titulo {
+    font-weight: var(--font-semibold);
+    font-size:   var(--text-base);
+  }
+
+  .cv__item-periodo {
+    font-size: var(--text-sm);
+    color:     var(--color-text-muted);
+  }
+
+  .cv__item-lugar {
+    font-size:     var(--text-sm);
+    color:         var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .cv__item-desc {
+    font-size:   var(--text-sm);
+    line-height: var(--leading-relaxed);
+  }
+
+  /* ── Habilidades ── */
+  .cv__habilidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap:     var(--space-6);
+  }
+
+  .cv__habilidad-cat {
+    font-size:     var(--text-sm);
+    font-weight:   var(--font-semibold);
+    color:         var(--color-text-muted);
+    margin-bottom: var(--space-3);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .cv__tags {
+    list-style: none;
+    display:    flex;
+    flex-wrap:  wrap;
+    gap:        var(--space-2);
+  }
+
+  .cv__tag {
+    font-size:     var(--text-sm);
+    padding:       var(--space-1) var(--space-3);
+    border:        1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    background:    var(--color-surface);
+  }
+</style>
